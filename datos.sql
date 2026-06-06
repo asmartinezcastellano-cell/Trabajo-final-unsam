@@ -18,7 +18,7 @@ create table producto(
     descripcion varchar(100),
     color varchar(20),
     embalaje varchar(25),
-    foreign key(embalaje) references(tipo),
+    foreign key(embalaje) references embalaje(tipo),
     primary key(modelo)
 );
 
@@ -65,7 +65,7 @@ create table producto_item(
     codigo_item varchar(10),
     cantidad int,
     primary key(modelo, codigo_item),
-    foreign key(modelo) references producto(nodelo),
+    foreign key(modelo) references producto(modelo),
     foreign key(codigo_item) references item(codigo_item)
 );
 
