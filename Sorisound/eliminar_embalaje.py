@@ -1,16 +1,33 @@
-# eliminar_embalaje.py
+
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QComboBox, 
                              QPushButton, QMessageBox)
 import mysql.connector
 import conexion 
 
+
+#==========================================================================
+#MODULO: eliminar_embalaje.py
+#DESCRIPCION: Formulario para eliminar embalajes registrados en la BD
+#Muestra combo box con tipos de embalajes, confirma eliminacino y maneja errores
+#
+#FUNCIONALIDADES:
+# - Carga tipos de embalajes en combo box al abrir la vista
+# - Permite seleccionar un tipo de embalaje y eliminarlo de la BD
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - No se permite eliminar un embalaje que esté asociado a productos (error de integridad)
+
+#==========================================================================
+
+
 class VistaEliminarEmbalaje(QWidget):
     def __init__(self):
         super().__init__()
         
-        layout = QVBoxLayout()
+        layout = QVBoxLayout() # Crea un layout vertical para organizar los widgets
         
-        label_titulo = QLabel("Eliminar Embalaje")
+        label_titulo = QLabel("Eliminar Embalaje")  # Título de la vista
         label_titulo.setStyleSheet("font-size : 20px; font-weight:bold; margin-bottom: 10px; color: #cc0000;")
         layout.addWidget(label_titulo)
 

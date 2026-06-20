@@ -2,6 +2,12 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                QLineEdit, QDoubleSpinBox, QPushButton, QListWidget,
                                QComboBox, QMessageBox, QScrollArea, QFrame)
 import conexion
+#========================================================================
+#MODULO: actualizar_item.py
+#DESCRIPCION: Formulario para actualizar datos de un item registrado en la BD
+#Carga datos actuales al seleccionar un item, permite modificar y guarda cambios
+#========================================================================
+
 
 class VistaModificarItem(QWidget):
     def __init__(self):

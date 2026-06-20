@@ -8,26 +8,26 @@ class VistaEliminarProceso(QWidget):
         
         layout = QVBoxLayout()
         
-        
+        #Titulo eliminar proceso
         titulo = QLabel("Eliminar un Proceso")
         titulo.setStyleSheet("font-size : 20px ; font-weight:bold; margin-bottom: 10px; color: #d32f2f;")
         layout.addWidget(titulo)
         
-       
+       # Instrucción para el usuario
         layout.addWidget(QLabel("Seleccione el Proceso que desea eliminar de la base de datos:"))
         self.combo_proceso = QComboBox()
         layout.addWidget(self.combo_proceso)     
         
-      
+        # Botón para eliminar el proceso seleccionado
         self.boton_eliminar = QPushButton("Eliminar Proceso")
         self.boton_eliminar.setStyleSheet("padding: 8px; font-weight: bold; background-color: #d32f2f; color: white;")
         self.boton_eliminar.clicked.connect(self.procesar_eliminacion)
         layout.addWidget(self.boton_eliminar)
-        
+        # Espacio al final para que no quede tan pegado al botón
         layout.addStretch()
         self.setLayout(layout)
         
-       
+       # Carga los procesos al iniciar la vista
         self.cargar_combo_box()
 
         

@@ -1,8 +1,3 @@
-"""
-MÓDULO: cargar_embalaje.py
-DESCRIPCIÓN: Formulario para registrar nuevos embalajes en la BD
-Validación de campos, manejo de errores y feedback de usuario
-"""
 
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QLineEdit, 
                              QSpinBox, QDoubleSpinBox, QPushButton, QMessageBox)
@@ -11,7 +6,13 @@ import mysql.connector
 
 import conexion 
 
-# Vista para cargar/registrar nuevo embalaje
+#==========================================================================
+#MODULO: cargar_embalaje.py
+#DESCRIPCION: Formulario para registrar nuevos embalajes en la BD
+#Validación de campos, manejo de errores y feedback de usuario
+#
+#==========================================================================
+
 class VistaCargarEmbalaje(QWidget):
     def __init__(self):
         super().__init__()

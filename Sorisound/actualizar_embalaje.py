@@ -3,6 +3,15 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QComboBox,
 from PySide6.QtCore import QDate
 import conexion
 
+#==========================================================================
+#MODULO: actualizar_embalaje.py
+#DESCRIPCION: Formulario para actualizar stock y precio de embalajes registrados en la BD
+#Carga datos actuales al seleccionar un embalaje, permite modificar y guarda cambios
+#
+#
+#===========================================================================
+
+
 class VistaActualizarEmbalaje(QWidget):
     def __init__(self):
         super().__init__()
