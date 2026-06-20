@@ -3,31 +3,7 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                QAbstractItemView, QHeaderView, QMessageBox)
 import conexion
 
-# ============================================================================
-# VISTA PARA MOSTRAR TODOS LOS ITEMS REGISTRADOS
-# ============================================================================
-# Esta clase muestra todos los items/productos registrados en una tabla
-# interactiva con opción para actualizar los datos.
-# ============================================================================
-
 class VistaVerItems(QWidget):
-    
-    # ________________________________________________________________________
-    # __init__()
-    # ________________________________________________________________________
-    # Inicializa la interfaz de visualización de items.
-    #
-    # Componentes:
-    #   - Título: "Lista de Ítems / Productos Registrados"
-    #   - Botón "🔄 Actualizar Tabla": Recarga datos de BD
-    #   - Tabla (QTableWidget):
-    #     * Columnas: Código, Color, Descripción, Peso (kg), Tipo Item,
-    #                 Ancho, Largo, Diámetro, Espesor, Largo Tira, Precio MP ($)
-    #     * No se puede editar directamente en la tabla
-    #     * Selección por filas completas
-    #
-    # Se llama a cargar_datos_tabla() automáticamente al inicializar.
-    # ________________________________________________________________________
     def __init__(self):
         super().__init__()
         
@@ -70,21 +46,6 @@ class VistaVerItems(QWidget):
         # carga los datos a la tabla
         self.cargar_datos_tabla()
 
-    # ________________________________________________________________________
-    # cargar_datos_tabla()
-    # ________________________________________________________________________
-    # Recupera todos los items de la BD y los muestra en la tabla.
-    #
-    # Flujo de ejecución:
-    #   1. Limpia todas las filas existentes de la tabla
-    #   2. Llama a conexion.obtener_todos_los_items_completo()
-    #   3. Itera sobre cada item (tupla) obtenido
-    #   4. Inserta una nueva fila para cada item
-    #   5. Llena cada celda con el valor correspondiente
-    #
-    # Se ejecuta automáticamente en __init__() y cuando el usuario
-    # hace clic en el botón "Actualizar Tabla".
-    # ________________________________________________________________________
     def cargar_datos_tabla(self):
         """Busca los datos en la BD y los dibuja en la tabla"""
         try:

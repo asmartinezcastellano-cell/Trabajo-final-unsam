@@ -2,28 +2,7 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QComboBox,
                                QPushButton, QMessageBox, QFrame)
 import conexion
 
-# ============================================================================
-# VISTA PARA ELIMINAR ITEMS EXISTENTES
-# ============================================================================
-# Esta clase define la interfaz para eliminar items/productos del catálogo.
-# Incluye múltiples confirmaciones de seguridad para evitar eliminaciones 
-# accidentales.
-# ============================================================================
-
 class VistaEliminarItem(QWidget):
-    
-    # ________________________________________________________________________
-    # __init__()
-    # ________________________________________________________________________
-    # Inicializa la interfaz de eliminación de items.
-    #
-    # Componentes:
-    #   - Título: "Eliminar Ítem del Sistema" (en rojo para advertencia)
-    #   - Marco de selección: ComboBox con códigos de items
-    #   - Botón rojo: "🚨 Eliminar Definitivamente"
-    #
-    # Se ejecuta refrescar_selector() al inicializar para cargar los códigos.
-    # ________________________________________________________________________
     def __init__(self):
         super().__init__()
         
@@ -55,20 +34,7 @@ class VistaEliminarItem(QWidget):
         
         
         self.refrescar_selector()
-    
-    # ________________________________________________________________________
-    # refrescar_selector()
-    # ________________________________________________________________________
-    # Carga todos los códigos de items disponibles en el ComboBox.
-    #
-    # Operaciones:
-    #   1. Limpia el ComboBox actual
-    #   2. Obtiene todos los códigos de items de BD
-    #   3. Si no hay items: muestra mensaje "No hay ítems registrados"
-    #   4. Si hay items: agrega cada código al ComboBox
-    #
-    # Se ejecuta en __init__() y después de cada eliminación exitosa.
-    # ________________________________________________________________________
+
     def refrescar_selector(self):
         """Llena el ComboBox con los códigos actuales de la BD"""
         self.combo_eliminar.clear()
@@ -83,27 +49,6 @@ class VistaEliminarItem(QWidget):
         except Exception as e:
             print(f"Error al cargar códigos para eliminar: {e}")
 
-    # ________________________________________________________________________
-    # procesar_eliminacion()
-    # ________________________________________________________________________
-    # Solicita confirmación del usuario y procede a eliminar el item.
-    #
-    # Validaciones de seguridad:
-    #   1. Verifica que haya un item válido seleccionado
-    #   2. Solicita confirmación explícita del usuario (con botón "No" por defecto)
-    #
-    # Flujo de ejecución:
-    #   1. Obtiene el código del item seleccionado
-    #   2. Valida que no esté vacío
-    #   3. Muestra diálogo de confirmación (Sí/No)
-    #   4. Si el usuario confirma:
-    #      a. Llama a conexion.eliminar_item_por_codigo()
-    #      b. Muestra mensaje de éxito
-    #      c. Recarga la lista de códigos
-    #   5. Si hay error: muestra detalles del error
-    #
-    # Nota: Usa confirmación doble para evitar eliminaciones accidentales.
-    # ________________________________________________________________________
     def procesar_eliminacion(self):
         codigo_seleccionado = self.combo_eliminar.currentText()
         
@@ -112,7 +57,7 @@ class VistaEliminarItem(QWidget):
             QMessageBox.warning(self, "Operación inválida", "No hay ningún ítem seleccionado para eliminar.")
             return
             
-       # Pedimos una confirmación adicional al usuario antes de eliminar, para evitar eliminaciones accidentales
+       
         confirmacion = QMessageBox.question(
             self, 
             "Confirmar Eliminación", 
@@ -120,7 +65,7 @@ class VistaEliminarItem(QWidget):
             QMessageBox.Yes | QMessageBox.No, 
             QMessageBox.No # El botón "No" viene seleccionado por defecto por seguridad
         )
-        # Si el usuario confirma la eliminación, procedemos a eliminar el ítem de la base de datos
+        
         if confirmacion == QMessageBox.Yes:
             try:
                 conexion.eliminar_item_por_codigo(codigo_seleccionado)

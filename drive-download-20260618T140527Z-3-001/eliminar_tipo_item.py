@@ -3,25 +3,7 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout,QLabel,QComboBox,
 import mysql.connector
 import conexion
 
-# ============================================================================
-# VISTA PARA ELIMINAR TIPOS DE ITEMS
-# ============================================================================
-# Esta clase define la interfaz para eliminar categor\u00edas de tipos de items
-# existentes. Incluye confirmaci\u00f3n del usuario antes de ejecutar la eliminaci\u00f3n.
-# ============================================================================
-
 class VistaEliminarTipoItem(QWidget):
-    
-    # ________________________________________________________________________
-    # __init__()
-    # ________________________________________________________________________
-    # Inicializa la interfaz de eliminaci\u00f3n de tipos de items.
-    #
-    # Componentes:
-    #   - T\u00edtulo: "Eliminar Tipo de Ítem" (en color rojo para advertencia)
-    #   - ComboBox: Seleccionar el tipo de item a eliminar
-    #   - Bot\u00f3n: "Eliminar de la Base de Datos el Tipo de Item"
-    # ________________________________________________________________________
     def __init__(self):
         super().__init__()
 
@@ -44,17 +26,6 @@ class VistaEliminarTipoItem(QWidget):
         layout.addStretch()
         self.setLayout(layout)
 
-    # ________________________________________________________________________
-    # cargar_combo_box()
-    # ________________________________________________________________________
-    # Carga todos los tipos de items disponibles en el ComboBox para selección.
-    #
-    # Operaciones:
-    #   1. Limpia el ComboBox actual
-    #   2. Obtiene todos los tipos de items de BD
-    #   3. Si no hay tipos: muestra mensaje y desactiva botón
-    #   4. Si hay tipos: los agrega uno por uno y activa botón
-    # ________________________________________________________________________
     def cargar_combo_box(self):
         self.combo_tipo_item.clear()
         try:
@@ -71,23 +42,6 @@ class VistaEliminarTipoItem(QWidget):
             QMessageBox.critical(self, "Error",f"No se pudieron cargar los tipos de items :{error}")
 
 
-    # ________________________________________________________________________
-    # confirmar_eliminacion()
-    # ________________________________________________________________________
-    # Solicita confirmación del usuario y procede a eliminar el tipo de item.
-    #
-    # Flujo de ejecución:
-    #   1. Obtiene el tipo de item seleccionado
-    #   2. Valida que haya selección válida
-    #   3. Muestra diálogo de confirmación al usuario (Sí/No)
-    #   4. Si el usuario confirma:
-    #      a. Llama a conexion.borrar_tipo_item()
-    #      b. Muestra mensaje de éxito
-    #      c. Recarga la lista de tipos
-    #   5. Si hay error:
-    #      - Error 1451: Integridad referencial (tipo en uso)
-    #      - Otros: Muestra mensaje de error genérico
-    # ________________________________________________________________________
     def confirmar_eliminacion(self):
         tipo_a_eliminar = self.combo_tipo_item.currentText()
 
