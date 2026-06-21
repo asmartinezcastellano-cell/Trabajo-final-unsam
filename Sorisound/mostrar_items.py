@@ -3,6 +3,23 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                QAbstractItemView, QHeaderView, QMessageBox)
 import conexion
 
+#==========================================================================
+#MODULO: mostrar_items.py
+#DESCRIPCION: Tabla de visualización de todos los ítems registrados
+#Carga datos de BD y los muestra en QTableWidget con opción de actualizar
+#
+#FUNCIONALIDADES:
+# - Carga lista completa de ítems al abrir la vista
+# - Muestra ítems en tabla con columnas: Código, Descripción, Tipo, Precio
+# - Permite actualizar/refrescar la tabla manualmente
+# - Ajusta automáticamente el ancho de las columnas
+#
+#NOTAS:
+# - Los datos se cargan directamente desde la BD
+# - La tabla es de solo lectura (consulta)
+#
+#==========================================================================
+
 class VistaVerItems(QWidget):
     def __init__(self):
         super().__init__()

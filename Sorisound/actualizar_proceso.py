@@ -3,11 +3,30 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QComboBox,
 from PySide6.QtCore import QDate
 import conexion
 
+
+#==========================================================================
+#MODULO: actualizar_proceso.py
+#DESCRIPCION: Formulario para actualizar el precio de un proceso registrado en la BD
+#Carga datos actuales al seleccionar un proceso, permite modificar y guarda cambios
+#
+#FUNCIONALIDADES:
+# - Carga lista de procesos disponibles en combo box al abrir la vista
+# - Al seleccionar un proceso, muestra su precio actual
+# - Permite modificar el precio del proceso
+# - Valida que el valor sea numérico y positivo
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - Los cambios se guardan inmediatamente en la BD
+# - El precio debe ser positivo
+#
+#===========================================================================
+
 class VistaActualizarProceso(QWidget):
     def __init__(self):
         super().__init__()
         
-        layout = QVBoxLayout()
+        layout = QVBoxLayout()# Crea un layout vertical para organizar los widgets
         
         # 1. Título de la ventana
         titulo = QLabel("Actualizar Precio de un Proceso")

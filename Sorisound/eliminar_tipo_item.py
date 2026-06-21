@@ -3,6 +3,21 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout,QLabel,QComboBox,
 import mysql.connector
 import conexion
 
+#==========================================================================
+#MODULO: eliminar_tipo_item.py
+#DESCRIPCION: Formulario para eliminar tipos de ítems registrados en la BD
+#Muestra combo box con tipos disponibles, confirma eliminación y maneja errores
+#
+#FUNCIONALIDADES:
+# - Carga tipos de ítems disponibles en combo box al abrir la vista
+# - Permite seleccionar un tipo de ítem y eliminarlo de la BD
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - No se permite eliminar un tipo de ítem que esté asociado a ítems (error de integridad)
+#
+#==========================================================================
+
 class VistaEliminarTipoItem(QWidget):
     def __init__(self):
         super().__init__()

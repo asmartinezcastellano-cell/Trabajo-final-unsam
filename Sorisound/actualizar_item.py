@@ -2,11 +2,24 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                QLineEdit, QDoubleSpinBox, QPushButton, QListWidget,
                                QComboBox, QMessageBox, QScrollArea, QFrame)
 import conexion
-#========================================================================
+#==========================================================================
 #MODULO: actualizar_item.py
 #DESCRIPCION: Formulario para actualizar datos de un item registrado en la BD
 #Carga datos actuales al seleccionar un item, permite modificar y guarda cambios
-#========================================================================
+#
+#FUNCIONALIDADES:
+# - Carga lista de ítems disponibles en combo box al abrir la vista
+# - Al seleccionar un ítem, muestra sus datos actuales (descripción y precio)
+# - Permite modificar la descripción y precio del ítem
+# - Valida campos antes de guardar cambios en BD
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - Los cambios se guardan inmediatamente en la BD
+# - La descripción no puede estar vacía
+# - El precio debe ser numérico y positivo
+#
+#==========================================================================
 
 
 class VistaModificarItem(QWidget):

@@ -8,8 +8,18 @@ import conexion
 #DESCRIPCION: Formulario para actualizar stock y precio de embalajes registrados en la BD
 #Carga datos actuales al seleccionar un embalaje, permite modificar y guarda cambios
 #
+#FUNCIONALIDADES:
+# - Carga lista de embalajes disponibles en combo box al abrir la vista
+# - Al seleccionar un embalaje, muestra datos actuales (stock y precio)
+# - Permite modificar los valores de stock y precio
+# - Valida campos antes de guardar cambios en BD
+# - Muestra mensajes de confirmación y error según corresponda
 #
-#===========================================================================
+#NOTAS:
+# - Los cambios se guardan inmediatamente en la BD
+# - Se valida que los valores sean numéricos y positivos
+#
+#==========================================================================
 
 
 class VistaActualizarEmbalaje(QWidget):

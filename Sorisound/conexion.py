@@ -1,9 +1,28 @@
-"""
-MÓDULO: conexion.py - Gestión de conexiones y operaciones CRUD con MySQL
-Sistema SoriSound: Embalajes, Items, Procesos, Productos
-"""
+
+#==========================================================================
+#MODULO: conexion.py
+#DESCRIPCION: Módulo centralizado para gestión de conexiones y operaciones CRUD
+#Funciones para interactuar con la base de datos MySQL desde la aplicación
+#
+#FUNCIONALIDADES:
+# - Establecer conexión a la BD MySQL
+# - Operaciones CRUD (Create, Read, Update, Delete) para:
+#   * Embalajes: guardar, obtener, actualizar, eliminar
+#   * Tipos de Ítems: guardar, obtener, actualizar, eliminar
+#   * Ítems: guardar, obtener, actualizar, eliminar
+#   * Procesos: guardar, obtener, actualizar, eliminar
+#   * Productos: guardar, obtener, actualizar, eliminar
+#   * Asociaciones entre ítems y productos
+#
+#NOTAS:
+# - Se utiliza conexión a BD: host=localhost, user=los_pibes, db=sorisound
+# - Las funciones manejan excepciones y errores de conectividad
+# - Las operaciones validan restricciones de integridad referencial
+#
+#==========================================================================
 
 import mysql.connector
+
 
 # Establece conexión a la base de datos MySQL del sistema
 def obtener_conexion():

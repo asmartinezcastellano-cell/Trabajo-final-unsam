@@ -5,6 +5,27 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
 from PySide6.QtCore import Qt
 import conexion
 
+#==========================================================================
+#MODULO: cargar_producto.py
+#DESCRIPCION: Formulario para registrar nuevos productos en la BD
+#Incluye validación de campos, manejo de errores y feedback de usuario
+#
+#FUNCIONALIDADES:
+# - Formulario para ingresar datos de un nuevo producto (modelo, descripción, color, embalaje)
+# - Permite seleccionar e incluir ítems asociados al producto
+# - Valida que los campos no estén vacíos y tengan valores válidos
+# - Verifica que el código del producto sea único en la BD
+# - Guarda el nuevo producto en la BD con sus ítems asociados
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - No se permite registrar productos con el mismo código
+# - El producto debe tener al menos un ítem asociado
+# - Se valida que el embalaje seleccionado exista en la BD
+#
+#==========================================================================
+
+
 class VistaCargarProducto(QWidget):
     def __init__(self):
         super().__init__()        

@@ -2,6 +2,21 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QComboBox,
                                QPushButton, QMessageBox, QFrame)
 import conexion
 
+#==========================================================================
+#MODULO: eliminar_item.py
+#DESCRIPCION: Formulario para eliminar ítems registrados en la BD
+#Muestra combo box con ítems disponibles, confirma eliminación y maneja errores
+#
+#FUNCIONALIDADES:
+# - Carga ítems disponibles en combo box al abrir la vista
+# - Permite seleccionar un ítem y eliminarlo de la BD
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - No se permite eliminar un ítem que esté asociado a productos (error de integridad)
+#
+#==========================================================================
+
 class VistaEliminarItem(QWidget):
     def __init__(self):
         super().__init__()

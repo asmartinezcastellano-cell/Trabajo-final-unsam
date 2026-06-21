@@ -1,14 +1,23 @@
-"""
-MÓDULO: mostrar_embalaje.py
-DESCRIPCIÓN: Tabla de visualización de todos los embalajes registrados
-Carga datos de BD y los muestra en QTableWidget con opción de actualizar
-"""
-
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, 
                              QTableWidget, QTableWidgetItem, QPushButton, QMessageBox, QHeaderView)
 import conexion
 
-# Vista para visualizar lista de todos los embalajes
+#==========================================================================
+#MODULO: mostrar_embalaje.py
+#DESCRIPCION: Tabla de visualización de todos los embalajes registrados
+#Carga datos de BD y los muestra en QTableWidget con opción de actualizar
+#
+#FUNCIONALIDADES:
+# - Carga lista completa de embalajes al abrir la vista
+# - Muestra embalajes en tabla con columnas: Tipo, Stock, Precio
+# - Permite actualizar/refrescar la tabla manualmente
+# - Ajusta automáticamente el ancho de las columnas
+#
+#NOTAS:
+# - Los datos se cargan directamente desde la BD
+# - La tabla es de solo lectura (consulta)
+#
+#==========================================================================
 class VistaVerEmbalaje(QWidget):
     def __init__(self):
         super().__init__()

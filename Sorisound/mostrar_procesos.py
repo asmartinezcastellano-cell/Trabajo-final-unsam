@@ -2,6 +2,23 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QComboBox,
                              QPushButton, QMessageBox)
 import conexion
 
+#==========================================================================
+#MODULO: mostrar_procesos.py
+#DESCRIPCION: Tabla de visualización de todos los procesos registrados
+#Carga datos de BD y los muestra en QTableWidget con opción de actualizar
+#
+#FUNCIONALIDADES:
+# - Carga lista completa de procesos al abrir la vista
+# - Muestra procesos en tabla con columnas: Nombre, Precio
+# - Permite actualizar/refrescar la tabla manualmente
+# - Ajusta automáticamente el ancho de las columnas
+#
+#NOTAS:
+# - Los datos se cargan directamente desde la BD
+# - La tabla es de solo lectura (consulta)
+#
+#==========================================================================
+
 class VistaEliminarProceso(QWidget):
     def __init__(self):
         super().__init__()

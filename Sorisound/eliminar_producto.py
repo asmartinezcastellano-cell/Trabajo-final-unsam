@@ -3,6 +3,23 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                QComboBox, QMessageBox, QScrollArea, QAbstractItemView, QHeaderView)
 import conexion
 
+#==========================================================================
+#MODULO: eliminar_producto.py
+#DESCRIPCION: Formulario para eliminar productos registrados en la BD
+#Muestra combo box con productos disponibles, confirma eliminación y maneja errores
+#
+#FUNCIONALIDADES:
+# - Carga productos disponibles en combo box al abrir la vista
+# - Permite seleccionar un producto y eliminarlo de la BD
+# - Muestra tabla con información del producto antes de eliminar
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - Al eliminar un producto, se eliminan también sus ítems asociados
+# - La eliminación no se permite si hay restricciones de integridad
+#
+#==========================================================================
+
 class VistaEliminarProducto(QWidget):
     def __init__(self):
         super().__init__()        

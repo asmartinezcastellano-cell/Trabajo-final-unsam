@@ -3,6 +3,23 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                QMessageBox, QScrollArea, QAbstractItemView, QHeaderView)
 import conexion
 
+#==========================================================================
+#MODULO: mostrar_producto.py
+#DESCRIPCION: Tabla de visualización de todos los productos registrados
+#Carga datos de BD y los muestra en QTableWidget con opción de actualizar
+#
+#FUNCIONALIDADES:
+# - Carga lista completa de productos al abrir la vista
+# - Muestra productos en tabla con columnas: Código, Descripción, Color, Embalaje
+# - Permite actualizar/refrescar la tabla manualmente
+# - Ajusta automáticamente el ancho de las columnas
+#
+#NOTAS:
+# - Los datos se cargan directamente desde la BD
+# - La tabla es de solo lectura (consulta)
+#
+#==========================================================================
+
 class VistaListarProductos(QWidget):
     def __init__(self):
         super().__init__()        

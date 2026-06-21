@@ -1,6 +1,26 @@
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
 import conexion
 
+#==========================================================================
+#MODULO: cargar_tipo_item.py
+#DESCRIPCION: Formulario para registrar nuevos tipos de ítems en la BD
+#Validación de campos, manejo de errores y feedback de usuario
+#
+#FUNCIONALIDADES:
+# - Formulario para ingresar el nombre de un nuevo tipo de ítem
+# - Valida que el campo no esté vacío
+# - Verifica que el tipo de ítem sea único en la BD
+# - Guarda el nuevo tipo de ítem en la BD
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - No se permite registrar tipos de ítems duplicados
+# - El nombre del tipo debe ser descriptivo
+#
+#==========================================================================
+
+
+
 class VistaCargarTipoItem(QWidget):
     def __init__(self):
         super().__init__()

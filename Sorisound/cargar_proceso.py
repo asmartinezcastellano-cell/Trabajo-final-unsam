@@ -4,7 +4,26 @@ from PySide6.QtCore import QDate
 import mysql.connector
 
 import conexion 
-# Vista para cargar/registrar nuevo proceso
+
+#==========================================================================
+#MODULO: cargar_proceso.py
+#DESCRIPCION: Formulario para registrar nuevos procesos en la BD
+#Validación de campos, manejo de errores y feedback de usuario
+#
+#FUNCIONALIDADES:
+# - Formulario para ingresar datos de un nuevo proceso (nombre, precio)
+# - Valida que los campos no estén vacíos y tengan valores válidos
+# - Verifica que el nombre del proceso sea único en la BD
+# - Guarda el nuevo proceso en la BD
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - No se permite registrar procesos con el mismo nombre
+# - El precio debe ser numérico y positivo
+#
+#==========================================================================
+
+
 class VistaCargarProceso(QWidget):
     def __init__(self):
         super().__init__()

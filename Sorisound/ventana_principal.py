@@ -1,11 +1,3 @@
-"""
-MÓDULO: ventana_principal.py
-DESCRIPCIÓN: Ventana principal de la aplicación SoriSound (GUI)
-Gestiona la navegación entre pantallas usando QStackedWidget
-Crea el menú principal con opciones CRUD para:
-- Embalajes, Tipos de Ítems, Ítems, Procesos, Productos
-"""
-
 import sys
 from PySide6.QtWidgets import (QApplication,QMainWindow, QStackedWidget)
 from PySide6.QtGui import QAction
@@ -30,7 +22,29 @@ import mostrar_producto
 import eliminar_producto
 
 
-# Ventana principal: crea interfaz con menú y contenedor de pantallas
+#==========================================================================
+#MODULO: ventana_principal.py
+#DESCRIPCION: Ventana principal y hub de navegación de la aplicación SoriSound
+#Interfaz gráfica con menú de opciones y QStackedWidget para cambiar vistas
+#
+#FUNCIONALIDADES:
+# - Crea ventana principal con menú de opciones (QMenuBar)
+# - Implementa navegación entre diferentes vistas usando QStackedWidget
+# - Proporciona opciones de menú para:
+#   * Registrar (Cargar): embalajes, tipos de ítems, ítems, procesos, productos
+#   * Consultar (Mostrar): embalajes, tipos de ítems, ítems, procesos, productos
+#   * Actualizar: embalajes, ítems, procesos, productos
+#   * Eliminar: embalajes, tipos de ítems, ítems, procesos, productos
+# - Integra todas las vistas de la aplicación
+#
+#NOTAS:
+# - La ventana mantiene estado de la vista actual
+# - El menú permite acceso rápido a todas las funcionalidades
+# - Se carga la vista de embalajes como pantalla de inicio
+#
+#==========================================================================
+
+
 class VentanaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__()# Configura título y tamaño de la ventana
@@ -110,14 +124,16 @@ class VentanaPrincipal(QMainWindow):
     # Crea menú principal con opciones de navegación
     def crear_menu(self):
         barra_menu =self.menuBar()
-
-        menu_archivo = barra_menu.addMenu("&Archivo")
+        
+        # ==================== MENÚ PRINCIPAL ====================
+        menu_archivo = barra_menu.addMenu("&Archivo") 
         accion_salir = QAction("Salir",self)
         accion_salir.triggered.connect(self.close)
         menu_archivo.addAction(accion_salir)
-
+        
+        # ==================== MENÚ EMBALAJE ====================
         menu_embalaje = barra_menu.addMenu("&Embalaje")
-
+        
         accion_cargar_embalaje = QAction("Cargar Embalaje",self)
         accion_cargar_embalaje.triggered.connect(lambda : self.contenedor_pantallas.setCurrentIndex(0))
         menu_embalaje.addAction(accion_cargar_embalaje)
@@ -137,7 +153,7 @@ class VentanaPrincipal(QMainWindow):
         self.pantalla_eliminar_embalaje.cargar_combo_box()
         menu_embalaje.addAction(accion_eliminar_embalaje)
 
-
+        #===================== MENÚ TIPO ÍTEM ====================
         menu_tipo_item = barra_menu.addMenu("&Tipo Item")
 
         accion_cargar_nuevo_tipo_item= QAction("Cargar Tipo Item",self)
@@ -153,7 +169,8 @@ class VentanaPrincipal(QMainWindow):
         accion_eliminar_tipo_item.triggered.connect(lambda:self.contenedor_pantallas.setCurrentIndex(6))        
         self.pantalla_eliminar_tipo_item.cargar_combo_box()
         menu_tipo_item.addAction(accion_eliminar_tipo_item) 
-
+        
+        #===================== MENÚ ITEM ====================
         menu_item = barra_menu.addMenu("&Item")
 
         accion_cargar_item = QAction("Cargar un Item",self)
@@ -171,7 +188,8 @@ class VentanaPrincipal(QMainWindow):
         accion_eliminar_item = QAction("Eliminar Item",self)
         accion_eliminar_item.triggered.connect(lambda:self.contenedor_pantallas.setCurrentIndex(10))
         menu_item.addAction(accion_eliminar_item)
-
+       
+        #===================== MENÚ PROCESO ====================
         menu_proceso = barra_menu.addMenu("&Proceso")
 
         accion_cargar_proceso = QAction("Cargar un Proceso",self)
@@ -189,7 +207,8 @@ class VentanaPrincipal(QMainWindow):
         accion_eliminar_proceso = QAction("Eliminar un Proceso",self)
         accion_eliminar_proceso.triggered.connect(lambda:self.contenedor_pantallas.setCurrentIndex(14))
         menu_proceso.addAction(accion_eliminar_proceso)
-
+        
+        #===================== MENÚ PRODUCTO ====================
         menu_producto = barra_menu.addMenu("&Producto")
 
 

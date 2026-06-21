@@ -4,6 +4,26 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
 
 import conexion
 
+#==========================================================================
+#MODULO: cargar_item.py
+#DESCRIPCION: Formulario para registrar nuevos items/productos en la BD
+#Incluye validación de campos, manejo de errores y feedback de usuario
+#
+#FUNCIONALIDADES:
+# - Formulario para ingresar datos de un nuevo ítem (tipo, descripción, precio)
+# - Valida que los campos no estén vacíos y tengan valores válidos
+# - Verifica que el código del ítem sea único en la BD
+# - Guarda el nuevo ítem en la BD
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - No se permite registrar ítems con el mismo código
+# - El precio debe ser numérico y positivo
+# - El tipo de ítem debe existir en la BD
+#
+#==========================================================================
+
+
 class VistaCargarItem(QWidget):
     def __init__(self):
         super().__init__()        

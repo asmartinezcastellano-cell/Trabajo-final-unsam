@@ -2,6 +2,21 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QComboBox,
                              QPushButton, QMessageBox)
 import conexion
 
+#==========================================================================
+#MODULO: eliminar_proceso.py
+#DESCRIPCION: Formulario para eliminar procesos registrados en la BD
+#Muestra combo box con procesos disponibles, confirma eliminación y maneja errores
+#
+#FUNCIONALIDADES:
+# - Carga procesos disponibles en combo box al abrir la vista
+# - Permite seleccionar un proceso y eliminarlo de la BD
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - No se permite eliminar un proceso que esté asociado a productos (error de integridad)
+#
+#==========================================================================
+
 class VistaEliminarProceso(QWidget):
     def __init__(self):
         super().__init__()

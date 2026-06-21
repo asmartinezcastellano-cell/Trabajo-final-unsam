@@ -5,6 +5,28 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
 from PySide6.QtCore import Qt
 import conexion
 
+#==========================================================================
+#MODULO: actualizar_producto.py
+#DESCRIPCION: Formulario para modificar un producto existente en la BD
+#Permite editar descripción, color, embalaje y los ítems asociados
+#Validación de campos, manejo de errores y feedback de usuario
+#
+#FUNCIONALIDADES:
+# - Carga lista de productos disponibles en combo box al abrir la vista
+# - Al seleccionar un producto, muestra sus datos actuales
+# - Permite modificar descripción, color y tipo de embalaje
+# - Permite agregar/remover ítems asociados al producto
+# - Valida campos antes de guardar cambios en BD
+# - Muestra mensajes de confirmación y error según corresponda
+#
+#NOTAS:
+# - Los cambios se guardan inmediatamente en la BD
+# - Se valida que los campos no estén vacíos
+# - Se mantiene sincronización con la lista de ítems disponibles
+#
+#==========================================================================
+
+
 class VistaModificarProducto(QWidget):
     def __init__(self):
         super().__init__()        
@@ -108,6 +130,10 @@ class VistaModificarProducto(QWidget):
         # Inicializar combos y listas de base
         self.actualizar_combos_iniciales()
         layout.addStretch()
+    
+    # ==========================================================================
+    # FUNCIONES DE APOYO PARA CARGA Y PROCESAMIENTO DE DATOS
+    # ==========================================================================
 
     def actualizar_combos_iniciales(self):
         """Llena los selectores de productos y embalajes"""
